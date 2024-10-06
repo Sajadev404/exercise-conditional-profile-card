@@ -28,13 +28,7 @@ function render(variables = {}) {
   // if includeCover==false then we reset the cover code without the <img> tag to make the cover transparent.
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
-  var elemento = document.getElementById("background");
 
-  // Añadir un event listener al elemento
-  elemento.addEventListener("click", function() {
-    // Cambiar el color de fondo del elemento a un color aleatorio
-    this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 75%)`; // Usa HSL para generar un color aleatorio
-  });
   // reset the website body with the new html output
 
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
@@ -87,7 +81,8 @@ window.onload = function() {
     lastName: null,
     role: null,
     country: null,
-    city: null
+    city: null,
+    backgroundColor: null
   };
   render(window.variables); // render the card for the first time
 
