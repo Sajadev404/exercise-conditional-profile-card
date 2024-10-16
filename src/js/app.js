@@ -30,7 +30,6 @@ function render(variables = {}) {
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
   // reset the website body with the new html output
-
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
@@ -81,8 +80,7 @@ window.onload = function() {
     lastName: null,
     role: null,
     country: null,
-    city: null,
-    backgroundColor: null
+    city: null
   };
   render(window.variables); // render the card for the first time
 
@@ -91,6 +89,9 @@ window.onload = function() {
       // <- add a listener to every input
       const attribute = e.target.getAttribute("for"); // when any input changes, collect the value
       let values = {};
+      if (attribute === "color") {
+        document.body.style.backgroundColor = elm.value;
+      }
       values[attribute] =
         this.value == "" || this.value == "null"
           ? null
